@@ -98,7 +98,7 @@ class ISBN
     public function get13()
     {
         // Is it invalid?
-        if ($this->isValid()) {
+        if (!$this->isValid()) {
             return false;
         }
         // Is it an ISBN-10?  If so, convert to Bookland EAN:
@@ -118,7 +118,7 @@ class ISBN
     public function isValid()
     {
         // If we haven't already checked validity, do so now and store the result:
-        if (is_null($this->valid)) {
+        if (null === $this->valid) {
             $this->valid = self::isValidISBN10($this->raw)
                 || self::isValidISBN13($this->raw);
         }
