@@ -48,8 +48,8 @@ class ISBNTest extends \PHPUnit_Framework_TestCase
     public function testValidISBN10()
     {
         $isbn = new ISBN('0123456789');
-        $this->assertEquals($isbn->get10(), '0123456789');
-        $this->assertEquals($isbn->get13(), '9780123456786');
+        $this->assertEquals('0123456789', $isbn->get10());
+        $this->assertEquals('9780123456786', $isbn->get13());
         $this->assertTrue($isbn->isValid());
     }
 
@@ -61,8 +61,8 @@ class ISBNTest extends \PHPUnit_Framework_TestCase
     public function testValidISBN13()
     {
         $isbn = new ISBN('9780123456786');
-        $this->assertEquals($isbn->get10(), '0123456789');
-        $this->assertEquals($isbn->get13(), '9780123456786');
+        $this->assertEquals('0123456789', $isbn->get10());
+        $this->assertEquals('9780123456786', $isbn->get13());
         $this->assertTrue($isbn->isValid());
     }
 
@@ -74,8 +74,8 @@ class ISBNTest extends \PHPUnit_Framework_TestCase
     public function testValidISBN10WithDashes()
     {
         $isbn = new ISBN('0-12-345678-9');
-        $this->assertEquals($isbn->get10(), '0123456789');
-        $this->assertEquals($isbn->get13(), '9780123456786');
+        $this->assertEquals('0123456789', $isbn->get10());
+        $this->assertEquals('9780123456786', $isbn->get13());
         $this->assertTrue($isbn->isValid());
     }
 
@@ -88,8 +88,8 @@ class ISBNTest extends \PHPUnit_Framework_TestCase
     {
         // Valid ISBN-13 with dashes:
         $isbn = new ISBN('978-0-12-345678-6');
-        $this->assertEquals($isbn->get10(), '0123456789');
-        $this->assertEquals($isbn->get13(), '9780123456786');
+        $this->assertEquals('0123456789', $isbn->get10());
+        $this->assertEquals('9780123456786', $isbn->get13());
         $this->assertTrue($isbn->isValid());
     }
 
@@ -102,8 +102,8 @@ class ISBNTest extends \PHPUnit_Framework_TestCase
     {
         // Valid ISBN-13 outside of Bookland EAN:
         $isbn = new ISBN('9790123456785');
-        $this->assertEquals($isbn->get10(), false);
-        $this->assertEquals($isbn->get13(), '9790123456785');
+        $this->assertFalse($isbn->get10());
+        $this->assertEquals('9790123456785', $isbn->get13());
         $this->assertTrue($isbn->isValid());
     }
 
@@ -116,8 +116,8 @@ class ISBNTest extends \PHPUnit_Framework_TestCase
     {
         // Invalid ISBN-10:
         $isbn = new ISBN('2314346323');
-        $this->assertEquals($isbn->get10(), false);
-        $this->assertEquals($isbn->get13(), false);
+        $this->assertFalse($isbn->get10());
+        $this->assertFalse($isbn->get13());
         $this->assertFalse($isbn->isValid());
     }
 }
