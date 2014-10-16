@@ -7,6 +7,11 @@
             "email": "demian.katz@villanova.edu"
         }
     ],
+    "homepage": "http://vufind.org/",
+    "license": "GPL-2.0",
+    "support": {
+        "issues": "http://vufind.org/jira"
+    },
     "autoload": {
         "psr-0": {
             "VuFindCode\\": "src/"
