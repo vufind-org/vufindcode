@@ -12,7 +12,6 @@
         <phingcall target="ci-tasks" />
       </try>
       <catch>
-        <phingcall target="shutdown" />
         <fail>Unexpected error during continuous integration tasks -- ${exceptionmsg}</fail>
       </catch>
     </trycatch>
