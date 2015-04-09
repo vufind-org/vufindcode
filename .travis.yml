@@ -1,5 +1,6 @@
 language: php
 php:
+  - 5.3
   - 5.4
 
 before_script:
@@ -8,5 +9,5 @@ before_script:
   - phpenv rehash
 
 script:
-  - phpunit --stderr --configuration phpunit.xml
+  - phpunit --stderr --configuration tests/phpunit.xml
   - phpcs --standard=PEAR --extensions=php $PWD/src
