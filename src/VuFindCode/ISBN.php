@@ -77,7 +77,7 @@ class ISBN
             // Is it already an ISBN-10?  If so, return as-is.
             if (strlen($this->raw) == 10) {
                 return $this->raw;
-            } else if (strlen($this->raw) == 13
+            } elseif (strlen($this->raw) == 13
                 && substr($this->raw, 0, 3) == '978'
             ) {
                 // Is it a Bookland EAN?  If so, we can convert to ISBN-10.
@@ -85,7 +85,7 @@ class ISBN
                 return $start . self::getISBN10CheckDigit($start);
             }
         }
-        
+
         // If we made it this far, conversion was not possible:
         return false;
     }
@@ -167,7 +167,7 @@ class ISBN
         if (strlen($isbn) != 10) {
             return false;
         }
-        return (substr($isbn, 9) == self::getISBN10CheckDigit(substr($isbn, 0, 9)));
+        return substr($isbn, 9) == self::getISBN10CheckDigit(substr($isbn, 0, 9));
     }
 
     /**
@@ -203,6 +203,6 @@ class ISBN
             return false;
         }
         return
-            (substr($isbn, 12) == self::getISBN13CheckDigit(substr($isbn, 0, 12)));
+            substr($isbn, 12) == self::getISBN13CheckDigit(substr($isbn, 0, 12));
     }
 }
