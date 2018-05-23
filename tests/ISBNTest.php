@@ -38,7 +38,7 @@ require_once __DIR__ . '/../src/VuFindCode/ISBN.php';
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
  * @link     https://vufind.org/wiki/development:testing:unit_tests Wiki
  */
-class ISBNTest extends \PHPUnit_Framework_TestCase
+class ISBNTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Test Valid ISBN-10.
