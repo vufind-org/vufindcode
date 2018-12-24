@@ -41,56 +41,30 @@ require_once __DIR__ . '/../src/VuFindCode/ISBN.php';
 class ISBNTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * Test Valid ISBN-10.
+     * Test that $raw results in valid $isbn10 and valid $isbn13.
      *
+     * @dataProvider validISBN10
      * @return void
      */
-    public function testValidISBN10()
+    public function testValidISBN10($raw, $isbn10, $isbn13)
     {
-        $isbn = new ISBN('0123456789');
-        $this->assertEquals('0123456789', $isbn->get10());
-        $this->assertEquals('9780123456786', $isbn->get13());
+        $isbn = new ISBN($raw);
+        $this->assertEquals($isbn10, $isbn->get10());
+        $this->assertEquals($isbn13, $isbn->get13());
         $this->assertTrue($isbn->isValid());
     }
 
-    /**
-     * Test Valid ISBN-13.
-     *
-     * @return void
-     */
-    public function testValidISBN13()
-    {
-        $isbn = new ISBN('9780123456786');
-        $this->assertEquals('0123456789', $isbn->get10());
-        $this->assertEquals('9780123456786', $isbn->get13());
-        $this->assertTrue($isbn->isValid());
-    }
-
-    /**
-     * Test Valid ISBN-10 with dashes.
-     *
-     * @return void
-     */
-    public function testValidISBN10WithDashes()
-    {
-        $isbn = new ISBN('0-12-345678-9');
-        $this->assertEquals('0123456789', $isbn->get10());
-        $this->assertEquals('9780123456786', $isbn->get13());
-        $this->assertTrue($isbn->isValid());
-    }
-
-    /**
-     * Test Valid ISBN-13 with dashes.
-     *
-     * @return void
-     */
-    public function testValidISBN13WithDashes()
-    {
-        // Valid ISBN-13 with dashes:
-        $isbn = new ISBN('978-0-12-345678-6');
-        $this->assertEquals('0123456789', $isbn->get10());
-        $this->assertEquals('9780123456786', $isbn->get13());
-        $this->assertTrue($isbn->isValid());
+    public function validISBN10() {
+        return [
+            'ISBN-10 plain'  => ['0123456789',        '0123456789', '9780123456786'],
+            'ISBN-10 dashes' => ['0-12-345678-9',     '0123456789', '9780123456786'],
+            'ISBN-10 spaces' => ['0 12 345678 9',     '0123456789', '9780123456786'],
+            'ISBN-13 plain'  => ['9780123456786',     '0123456789', '9780123456786'],
+            'ISBN-13 dashes' => ['978-0-12-345678-6', '0123456789', '9780123456786'],
+            'ISBN-13 spaces' => ['978 0 12 345678 6', '0123456789', '9780123456786'],
+            'ISBN-10 with x' => ['012345672x',        '012345672X', '9780123456724'],
+            'ISBN-10 with X' => ['012345672X',        '012345672X', '9780123456724'],
+        ];
     }
 
     /**
@@ -108,16 +82,30 @@ class ISBNTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test Invalid ISBN-10.
+     * Test Invalid ISBN.
      *
+     * @dataProvider invalidISBN
      * @return void
      */
-    public function testInvalidISBN10()
+    public function testInvalidISBN($raw)
     {
-        // Invalid ISBN-10:
-        $isbn = new ISBN('2314346323');
+        $isbn = new ISBN($raw);
         $this->assertFalse($isbn->get10());
         $this->assertFalse($isbn->get13());
         $this->assertFalse($isbn->isValid());
+    }
+
+    public function invalidISBN() {
+        return [
+            'empty'                  => [''],
+            'ISBN-10 wrong checksum' => ['2314346323'],
+            'ISBN-13 wrong checksum' => ['9780123456787'],
+            '10 times X'             => ['XXXXXXXXXX'],
+            '13 times X'             => ['XXXXXXXXXXXXX'],
+            'ISBN-10 with X inside'  => ['01234567X3'],
+            'ISBN-13 with X inside'  => ['97901234567X9'],
+            'garbage'                => ['foo 0123456789 bar'],
+            'UUID'                   => ['a9b7c8d0-a123-4567-abcdabcd86ef'],
+        ];
     }
 }
