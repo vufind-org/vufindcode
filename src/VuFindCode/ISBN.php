@@ -134,7 +134,16 @@ class ISBN
      */
     public static function normalizeISBN($raw)
     {
-        return preg_replace('/[^0-9X]/', '', strtoupper($raw));
+        // First strip out illegal characters:
+        $pass1 = preg_replace('/[^0-9X]/', '', strtoupper($raw));
+        if (strlen($pass1) < 2) {
+            return $pass1;
+        }
+
+        // Now make sure we only have an X at the end:
+        $check = substr($pass1, -1);
+        $isbn = substr($pass1, 0, strlen($pass1) - 1);
+        return preg_replace('/[^0-9]/', '', $isbn) . $check;
     }
 
     /**
