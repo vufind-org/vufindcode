@@ -54,6 +54,11 @@ class ISBNTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue($isbn->isValid());
     }
 
+    /**
+     * Data provider for testValidISBN10().
+     *
+     * @return array
+     */
     public function validISBN10() {
         return [
             'ISBN-10 plain'  => ['0123456789',        '0123456789', '9780123456786'],
@@ -95,6 +100,11 @@ class ISBNTest extends \PHPUnit\Framework\TestCase
         $this->assertFalse($isbn->isValid());
     }
 
+    /**
+     * Data provider for testInvalidISBN().
+     *
+     * @return array
+     */
     public function invalidISBN() {
         return [
             'empty'                  => [''],
