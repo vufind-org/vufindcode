@@ -116,6 +116,7 @@ class ISBNTest extends \PHPUnit\Framework\TestCase
             '13 times X'             => ['XXXXXXXXXXXXX'],
             'ISBN-10 with X inside'  => ['01234567X3'],
             'ISBN-13 with X inside'  => ['97901234567X9'],
+            'UUID'                   => ['a9b7c8d0-a123-4567-abcdabcd86ef'],
         ];
     }
 
