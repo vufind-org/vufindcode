@@ -137,7 +137,7 @@ class ISBN
      */
     public static function normalizeISBN($raw)
     {
-        if (!preg_match('/(?:\d(?:\s|\.|-)*){8,}[xX]?/', $raw, $match)) {
+        if (!preg_match('/(?:\d(?:\W|_)*){8,}[xX]?/', $raw, $match)) {
             return '';
         }
         return preg_replace('/[^0-9X]/', '', strtoupper($match[0]));
