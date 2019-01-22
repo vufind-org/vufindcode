@@ -127,7 +127,7 @@ class ISBN
 
     /**
      * Return the first sequence of at least 8 digits followed by an optional X.
-     * These ISBN characters may be separated by any number of '.', '-' and
+     * These ISBN characters may be separated by any number of '.', '-', '_' and
      * whitespace characters; the separation characters are removed.
      * A lower x is converted to an upper X.
      *
