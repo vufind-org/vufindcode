@@ -126,7 +126,10 @@ class ISBN
     }
 
     /**
-     * Strip extraneous characters and whitespace from an ISBN.
+     * Return the first sequence of at least 8 digits followed by an optional X.
+     * These ISBN characters may be separated by any number of '.', '-', '_' and
+     * whitespace characters; the separation characters are removed.
+     * A lower x is converted to an upper X.
      *
      * @param string $raw ISBN to clean up.
      *
@@ -134,16 +137,10 @@ class ISBN
      */
     public static function normalizeISBN($raw)
     {
-        // First strip out illegal characters:
-        $pass1 = preg_replace('/[^0-9X]/', '', strtoupper($raw));
-        if (strlen($pass1) < 2) {
-            return $pass1;
+        if (!preg_match('/(?:\d(?:[\s_.-])*){8,}[xX]?/', $raw, $match)) {
+            return '';
         }
-
-        // Now make sure we only have an X at the end:
-        $check = substr($pass1, -1);
-        $isbn = substr($pass1, 0, strlen($pass1) - 1);
-        return preg_replace('/[^0-9]/', '', $isbn) . $check;
+        return preg_replace('/[^0-9X]/', '', strtoupper($match[0]));
     }
 
     /**
