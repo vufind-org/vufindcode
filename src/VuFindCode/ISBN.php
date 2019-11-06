@@ -113,7 +113,7 @@ class ISBN
     /**
      * Is the current ISBN valid in some format?  (May be 10 or 13 digit).
      *
-     * @return boolean
+     * @return bool
      */
     public function isValid()
     {
@@ -165,7 +165,7 @@ class ISBN
      *
      * @param string $isbn The ISBN-10 to test.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isValidISBN10($isbn)
     {
@@ -185,14 +185,8 @@ class ISBN
      */
     public static function getISBN13CheckDigit($isbn)
     {
-        $sum = 0;
-        $weight = 1;
-        for ($x = 0; $x < strlen($isbn); $x++) {
-            $sum += intval(substr($isbn, $x, 1)) * $weight;
-            $weight = $weight == 1 ? 3 : 1;
-        }
-        $retval = 10 - ($sum % 10);
-        return $retval == 10 ? 0 : $retval;
+        // ISBN-13 is the same as EAN-13:
+        return EAN::getEAN13CheckDigit($isbn);
     }
 
     /**
@@ -200,15 +194,11 @@ class ISBN
      *
      * @param string $isbn The ISBN-13 to test.
      *
-     * @return boolean
+     * @return bool
      */
     public static function isValidISBN13($isbn)
     {
-        $isbn = self::normalizeISBN($isbn);
-        if (strlen($isbn) != 13) {
-            return false;
-        }
-        return
-            substr($isbn, 12) == self::getISBN13CheckDigit(substr($isbn, 0, 12));
+        // ISBN-13 is the same as EAN-13:
+        return EAN::isValidEAN13($isbn);
     }
 }
