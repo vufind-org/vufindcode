@@ -137,10 +137,9 @@ class ISMN
      */
     public static function normalizeISMN($raw)
     {
-        if (!preg_match('/(?:[M0-9](?:[\s_.-])*){9,}/i', $raw, $match)) {
-            return '';
-        }
-        return preg_replace('/[^0-9M]/', '', strtoupper($match[0]));
+        $regex = '/m?(?:(?:[\s_.-])*[0-9](?:[\s_.-])*){9,}/i';
+        return preg_match($regex, $raw, $match)
+            ? preg_replace('/[^0-9M]/', '', strtoupper($match[0])) : '';
     }
 
     /**
