@@ -126,10 +126,10 @@ class ISMN
     }
 
     /**
-     * Return the first sequence of at least 8 digits followed by an optional X.
+     * Return the first sequence of at least 9 digits preceded by an optional M.
      * These ISMN characters may be separated by any number of '.', '-', '_' and
      * whitespace characters; the separation characters are removed.
-     * A lower x is converted to an upper X.
+     * A lower m is converted to an upper M.
      *
      * @param string $raw ISMN to clean up.
      *
@@ -137,10 +137,10 @@ class ISMN
      */
     public static function normalizeISMN($raw)
     {
-        if (!preg_match('/(?:[M0-9](?:[\s_.-])*){8,}X?/i', $raw, $match)) {
+        if (!preg_match('/(?:[M0-9](?:[\s_.-])*){9,}/i', $raw, $match)) {
             return '';
         }
-        return preg_replace('/[^0-9XM]/', '', strtoupper($match[0]));
+        return preg_replace('/[^0-9M]/', '', strtoupper($match[0]));
     }
 
     /**
