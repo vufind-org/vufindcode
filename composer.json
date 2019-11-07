@@ -1,6 +1,6 @@
 {
     "name": "vufind-org/vufindcode",
-    "description": "Class for representing ISBNs (a VuFind support library)",
+    "description": "Classes for working with EANs, ISBNs and ISMNs (a VuFind support library)",
     "authors": [
         {
             "name": "Demian Katz",
