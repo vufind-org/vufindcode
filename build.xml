@@ -117,7 +117,7 @@
           </fileset>
         </phpdoc2>
         -->
-        <exec command="php ${srcdir}/vendor/bin/phpDocumentor-${phpdoc_version}.phar --cache-folder=${builddir}/docs_cache --title=&quot;VuFind API Documentation&quot; -t ${builddir}/apidocs -d ${srcdir}/module" passthru="true" />
+        <exec command="php ${srcdir}/vendor/bin/phpDocumentor-${phpdoc_version}.phar --cache-folder=${builddir}/docs_cache --title=&quot;VuFind API Documentation&quot; -t ${builddir}/apidocs -d ${srcdir}/src" passthru="true" />
       </then>
     </if>
   </target>
