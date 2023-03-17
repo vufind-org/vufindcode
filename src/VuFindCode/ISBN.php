@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ISBN validation and conversion functionality
  *
@@ -25,6 +26,7 @@
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
  * @link     https://vufind.org Main Page
  */
+
 namespace VuFindCode;
 
 /**
@@ -77,7 +79,8 @@ class ISBN
             // Is it already an ISBN-10?  If so, return as-is.
             if (strlen($this->raw) == 10) {
                 return $this->raw;
-            } elseif (strlen($this->raw) == 13
+            } elseif (
+                strlen($this->raw) == 13
                 && substr($this->raw, 0, 3) == '978'
             ) {
                 // Is it a Bookland EAN?  If so, we can convert to ISBN-10.

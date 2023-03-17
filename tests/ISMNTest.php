@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ISMN Test Class
  *
@@ -25,8 +26,10 @@
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
  * @link     https://vufind.org/wiki/development:testing:unit_tests Wiki
  */
+
+namespace VuFindCodeTest;
+
 use VuFindCode\ISMN;
-require_once __DIR__ . '/../src/VuFindCode/ISMN.php';
 
 /**
  * ISMN Test Class
@@ -43,7 +46,12 @@ class ISMNTest extends \PHPUnit\Framework\TestCase
     /**
      * Test that $raw results in valid $ismn10 and valid $ismn13.
      *
+     * @param string $raw    Raw ISBN
+     * @param string $ismn10 Expected ISMN-10
+     * @param string $ismn13 Expected ISMN-13
+     *
      * @dataProvider validISMN10
+     *
      * @return void
      */
     public function testValidISMN10($raw, $ismn10, $ismn13)
@@ -59,7 +67,8 @@ class ISMNTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function validISMN10() {
+    public function validISMN10()
+    {
         return [
             'ISMN-10 plain'  => ['M230671187',        'M230671187', '9790230671187'],
             'ISMN-10 lower'  => ['m230671187',        'M230671187', '9790230671187'],
@@ -94,7 +103,10 @@ class ISMNTest extends \PHPUnit\Framework\TestCase
     /**
      * Test Invalid ISMN.
      *
+     * @param string $raw Test input
+     *
      * @dataProvider invalidISMN
+     *
      * @return void
      */
     public function testInvalidISMN($raw)
@@ -110,7 +122,8 @@ class ISMNTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function invalidISMN() {
+    public function invalidISMN()
+    {
         return [
             'empty'                  => [''],
             'ISMN-10 wrong checksum' => ['2314346323'],
@@ -126,7 +139,11 @@ class ISMNTest extends \PHPUnit\Framework\TestCase
     /**
      * Test normalizeISMN($raw).
      *
+     * @param string $raw  Test input
+     * @param string $ismn Expected test output
+     *
      * @dataProvider normalizeISMN
+     *
      * @return void
      */
     public function testNormalizeISMN($raw, $ismn)
@@ -139,7 +156,8 @@ class ISMNTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function normalizeISMN() {
+    public function normalizeISMN()
+    {
         return [
             ['', ''],
             ['1,22,333,4444,55555,666666,7777777', ''],

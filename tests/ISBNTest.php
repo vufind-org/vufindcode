@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ISBN Test Class
  *
@@ -25,8 +26,10 @@
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
  * @link     https://vufind.org/wiki/development:testing:unit_tests Wiki
  */
+
+namespace VuFindCodeTest;
+
 use VuFindCode\ISBN;
-require_once __DIR__ . '/../src/VuFindCode/ISBN.php';
 
 /**
  * ISBN Test Class
@@ -43,7 +46,12 @@ class ISBNTest extends \PHPUnit\Framework\TestCase
     /**
      * Test that $raw results in valid $isbn10 and valid $isbn13.
      *
+     * @param string $raw    Raw ISBN
+     * @param string $isbn10 Expected ISBN-10
+     * @param string $isbn13 Expected ISBN-13
+     *
      * @dataProvider validISBN10
+     *
      * @return void
      */
     public function testValidISBN10($raw, $isbn10, $isbn13)
@@ -59,7 +67,8 @@ class ISBNTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function validISBN10() {
+    public function validISBN10()
+    {
         return [
             'ISBN-10 plain'  => ['0123456789',        '0123456789', '9780123456786'],
             'ISBN-10 dashes' => ['0-12-345678-9',     '0123456789', '9780123456786'],
@@ -95,7 +104,10 @@ class ISBNTest extends \PHPUnit\Framework\TestCase
     /**
      * Test Invalid ISBN.
      *
+     * @param string $raw Test input
+     *
      * @dataProvider invalidISBN
+     *
      * @return void
      */
     public function testInvalidISBN($raw)
@@ -111,7 +123,8 @@ class ISBNTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function invalidISBN() {
+    public function invalidISBN()
+    {
         return [
             'empty'                  => [''],
             'ISBN-10 wrong checksum' => ['2314346323'],
@@ -127,7 +140,11 @@ class ISBNTest extends \PHPUnit\Framework\TestCase
     /**
      * Test normalizeISBN($raw).
      *
+     * @param string $raw  Raw ISBN
+     * @param string $isbn Expected ISBN
+     *
      * @dataProvider normalizeISBN
+     *
      * @return void
      */
     public function testNormalizeISBN($raw, $isbn)
@@ -140,7 +157,8 @@ class ISBNTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function normalizeISBN() {
+    public function normalizeISBN()
+    {
         return [
             ['', ''],
             ['1,22,333,4444,55555,666666,7777777', ''],
