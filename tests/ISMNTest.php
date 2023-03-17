@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ISMN Test Class
  *
@@ -25,6 +26,7 @@
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
  * @link     https://vufind.org/wiki/development:testing:unit_tests Wiki
  */
+
 use VuFindCode\ISMN;
 
 require_once __DIR__ . '/../src/VuFindCode/ISMN.php';
@@ -45,6 +47,7 @@ class ISMNTest extends \PHPUnit\Framework\TestCase
      * Test that $raw results in valid $ismn10 and valid $ismn13.
      *
      * @dataProvider validISMN10
+     *
      * @return void
      */
     public function testValidISMN10($raw, $ismn10, $ismn13)
@@ -97,6 +100,7 @@ class ISMNTest extends \PHPUnit\Framework\TestCase
      * Test Invalid ISMN.
      *
      * @dataProvider invalidISMN
+     *
      * @return void
      */
     public function testInvalidISMN($raw)
@@ -130,6 +134,7 @@ class ISMNTest extends \PHPUnit\Framework\TestCase
      * Test normalizeISMN($raw).
      *
      * @dataProvider normalizeISMN
+     *
      * @return void
      */
     public function testNormalizeISMN($raw, $ismn)

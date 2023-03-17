@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ISBN Test Class
  *
@@ -25,6 +26,7 @@
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
  * @link     https://vufind.org/wiki/development:testing:unit_tests Wiki
  */
+
 use VuFindCode\ISBN;
 
 require_once __DIR__ . '/../src/VuFindCode/ISBN.php';
@@ -45,6 +47,7 @@ class ISBNTest extends \PHPUnit\Framework\TestCase
      * Test that $raw results in valid $isbn10 and valid $isbn13.
      *
      * @dataProvider validISBN10
+     *
      * @return void
      */
     public function testValidISBN10($raw, $isbn10, $isbn13)
@@ -98,6 +101,7 @@ class ISBNTest extends \PHPUnit\Framework\TestCase
      * Test Invalid ISBN.
      *
      * @dataProvider invalidISBN
+     *
      * @return void
      */
     public function testInvalidISBN($raw)
@@ -131,6 +135,7 @@ class ISBNTest extends \PHPUnit\Framework\TestCase
      * Test normalizeISBN($raw).
      *
      * @dataProvider normalizeISBN
+     *
      * @return void
      */
     public function testNormalizeISBN($raw, $isbn)
