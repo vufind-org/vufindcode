@@ -27,9 +27,9 @@
  * @link     https://vufind.org/wiki/development:testing:unit_tests Wiki
  */
 
-use VuFindCode\ISMN;
+namespace VuFindCodeTest;
 
-require_once __DIR__ . '/../src/VuFindCode/ISMN.php';
+use VuFindCode\ISMN;
 
 /**
  * ISMN Test Class
@@ -45,6 +45,10 @@ class ISMNTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Test that $raw results in valid $ismn10 and valid $ismn13.
+     *
+     * @param string $raw    Raw ISBN
+     * @param string $ismn10 Expected ISMN-10
+     * @param string $ismn13 Expected ISMN-13
      *
      * @dataProvider validISMN10
      *
@@ -99,6 +103,8 @@ class ISMNTest extends \PHPUnit\Framework\TestCase
     /**
      * Test Invalid ISMN.
      *
+     * @param string $raw Test input
+     *
      * @dataProvider invalidISMN
      *
      * @return void
@@ -132,6 +138,9 @@ class ISMNTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test normalizeISMN($raw).
+     *
+     * @param string $raw  Test input
+     * @param string $ismn Expected test output
      *
      * @dataProvider normalizeISMN
      *

@@ -27,9 +27,9 @@
  * @link     https://vufind.org/wiki/development:testing:unit_tests Wiki
  */
 
-use VuFindCode\ISBN;
+namespace VuFindCodeTest;
 
-require_once __DIR__ . '/../src/VuFindCode/ISBN.php';
+use VuFindCode\ISBN;
 
 /**
  * ISBN Test Class
@@ -45,6 +45,10 @@ class ISBNTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Test that $raw results in valid $isbn10 and valid $isbn13.
+     *
+     * @param string $raw    Raw ISBN
+     * @param string $isbn10 Expected ISBN-10
+     * @param string $isbn13 Expected ISBN-13
      *
      * @dataProvider validISBN10
      *
@@ -100,6 +104,8 @@ class ISBNTest extends \PHPUnit\Framework\TestCase
     /**
      * Test Invalid ISBN.
      *
+     * @param string $raw Test input
+     *
      * @dataProvider invalidISBN
      *
      * @return void
@@ -133,6 +139,9 @@ class ISBNTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test normalizeISBN($raw).
+     *
+     * @param string $raw  Raw ISBN
+     * @param string $isbn Expected ISBN
      *
      * @dataProvider normalizeISBN
      *
