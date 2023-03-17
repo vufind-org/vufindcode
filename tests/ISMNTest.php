@@ -26,6 +26,7 @@
  * @link     https://vufind.org/wiki/development:testing:unit_tests Wiki
  */
 use VuFindCode\ISMN;
+
 require_once __DIR__ . '/../src/VuFindCode/ISMN.php';
 
 /**
@@ -59,7 +60,8 @@ class ISMNTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function validISMN10() {
+    public function validISMN10()
+    {
         return [
             'ISMN-10 plain'  => ['M230671187',        'M230671187', '9790230671187'],
             'ISMN-10 lower'  => ['m230671187',        'M230671187', '9790230671187'],
@@ -110,7 +112,8 @@ class ISMNTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function invalidISMN() {
+    public function invalidISMN()
+    {
         return [
             'empty'                  => [''],
             'ISMN-10 wrong checksum' => ['2314346323'],
@@ -139,7 +142,8 @@ class ISMNTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function normalizeISMN() {
+    public function normalizeISMN()
+    {
         return [
             ['', ''],
             ['1,22,333,4444,55555,666666,7777777', ''],

@@ -26,6 +26,7 @@
  * @link     https://vufind.org/wiki/development:testing:unit_tests Wiki
  */
 use VuFindCode\ISBN;
+
 require_once __DIR__ . '/../src/VuFindCode/ISBN.php';
 
 /**
@@ -59,7 +60,8 @@ class ISBNTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function validISBN10() {
+    public function validISBN10()
+    {
         return [
             'ISBN-10 plain'  => ['0123456789',        '0123456789', '9780123456786'],
             'ISBN-10 dashes' => ['0-12-345678-9',     '0123456789', '9780123456786'],
@@ -111,7 +113,8 @@ class ISBNTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function invalidISBN() {
+    public function invalidISBN()
+    {
         return [
             'empty'                  => [''],
             'ISBN-10 wrong checksum' => ['2314346323'],
@@ -140,7 +143,8 @@ class ISBNTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function normalizeISBN() {
+    public function normalizeISBN()
+    {
         return [
             ['', ''],
             ['1,22,333,4444,55555,666666,7777777', ''],
