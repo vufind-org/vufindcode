@@ -29,6 +29,9 @@
 
 namespace VuFindCode;
 
+use function intval;
+use function strlen;
+
 /**
  * EAN Class
  *
