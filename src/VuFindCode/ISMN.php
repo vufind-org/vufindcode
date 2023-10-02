@@ -29,6 +29,8 @@
 
 namespace VuFindCode;
 
+use function strlen;
+
 /**
  * ISMN Class
  *
