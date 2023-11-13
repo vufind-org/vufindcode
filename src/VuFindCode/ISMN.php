@@ -83,7 +83,7 @@ class ISMN
                 return $this->raw;
             } elseif (
                 strlen($this->raw) == 13
-                && substr($this->raw, 0, 3) == '979'
+                && str_starts_with($this->raw, '979')
             ) {
                 // Is it a music EAN?  If so, we can convert to ISMN-10.
                 $start = 'M' . substr($this->raw, 4, 8);
