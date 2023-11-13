@@ -92,10 +92,8 @@ class EAN
     public static function isValidEAN13($ean)
     {
         $ean = static::normalizeEAN($ean);
-        if (strlen($ean) != 13) {
-            return false;
-        }
-        return
-            substr($ean, 12) == self::getEAN13CheckDigit(substr($ean, 0, 12));
+        return (strlen($ean) != 13)
+            ? false
+            : str_ends_with($ean, self::getEAN13CheckDigit(substr($ean, 0, 12)));
     }
 }

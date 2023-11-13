@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file, in reverse 
 ### Changed
 
 - The minimum PHP version requirement has been raised to 8.0.
+- The str_starts_with and str_ends_with functions have been used instead of substr where possible.
 
 ### Deprecated
 

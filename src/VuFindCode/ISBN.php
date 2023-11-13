@@ -84,7 +84,7 @@ class ISBN
                 return $this->raw;
             } elseif (
                 strlen($this->raw) == 13
-                && substr($this->raw, 0, 3) == '978'
+                && str_starts_with($this->raw, '978')
             ) {
                 // Is it a Bookland EAN?  If so, we can convert to ISBN-10.
                 $start = substr($this->raw, 3, 9);
@@ -176,10 +176,9 @@ class ISBN
     public static function isValidISBN10($isbn)
     {
         $isbn = self::normalizeISBN($isbn);
-        if (strlen($isbn) != 10) {
-            return false;
-        }
-        return substr($isbn, 9) == self::getISBN10CheckDigit(substr($isbn, 0, 9));
+        return (strlen($isbn) != 10)
+            ? false
+            : str_ends_with($isbn, self::getISBN10CheckDigit(substr($isbn, 0, 9)));
     }
 
     /**
