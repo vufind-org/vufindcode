@@ -67,7 +67,7 @@ class ISMNTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function validISMN10()
+    public static function validISMN10()
     {
         return [
             'ISMN-10 plain'  => ['M230671187',        'M230671187', '9790230671187'],
@@ -122,7 +122,7 @@ class ISMNTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function invalidISMN()
+    public static function invalidISMN()
     {
         return [
             'empty'                  => [''],
@@ -156,7 +156,7 @@ class ISMNTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function normalizeISMN()
+    public static function normalizeISMN()
     {
         return [
             ['', ''],

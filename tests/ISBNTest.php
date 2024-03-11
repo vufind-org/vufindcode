@@ -67,7 +67,7 @@ class ISBNTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function validISBN10()
+    public static function validISBN10()
     {
         return [
             'ISBN-10 plain'  => ['0123456789',        '0123456789', '9780123456786'],
@@ -123,7 +123,7 @@ class ISBNTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function invalidISBN()
+    public static function invalidISBN()
     {
         return [
             'empty'                  => [''],
@@ -157,7 +157,7 @@ class ISBNTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function normalizeISBN()
+    public static function normalizeISBN()
     {
         return [
             ['', ''],
