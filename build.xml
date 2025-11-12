@@ -38,6 +38,7 @@
     <phingcall target="phpmd"/>
     <phingcall target="pdepend"/>
     <phingcall target="phpstan-checkstyle"/>
+    <phingcall target="rector-console"/>
   </target>
 
   <!-- Report rule violations with PHPMD (mess detector) -->
@@ -80,6 +81,18 @@
   <target name="phpstan-console">
     <exec executable="${srcdir}/vendor/bin/phpstan" escape="false" passthru="true" checkreturn="true"> 
       <arg line="--configuration=${srcdir}/tests/phpstan.neon --memory-limit=2G analyse" />
+    </exec>
+  </target>
+  
+  <!-- Rector -->
+  <target name="rector-console">
+    <exec executable="${srcdir}/vendor/bin/rector" escape="false" passthru="true" checkreturn="true">
+      <arg line="--config=${srcdir}/tests/rector.php --dry-run" />
+    </exec>
+  </target>
+  <target name="rector">
+    <exec executable="${srcdir}/vendor/bin/rector" escape="false" passthru="true" checkreturn="true">
+      <arg line="--config=${srcdir}/tests/rector.php" />
     </exec>
   </target>
 
