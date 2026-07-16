@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ISMN Test Class
+ * ISMN Test Class.
  *
  * PHP version 7
  *
@@ -32,7 +32,7 @@ namespace VuFindCodeTest;
 use VuFindCode\ISMN;
 
 /**
- * ISMN Test Class
+ * ISMN Test Class.
  *
  * @category VuFind
  * @package  Tests

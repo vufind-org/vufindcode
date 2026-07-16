@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ISBN validation and conversion functionality
+ * ISBN validation and conversion functionality.
  *
  * PHP version 7
  *
@@ -33,7 +33,7 @@ use function intval;
 use function strlen;
 
 /**
- * ISBN Class
+ * ISBN Class.
  *
  * This class provides ISBN validation and conversion functionality.
  *
@@ -46,21 +46,21 @@ use function strlen;
 class ISBN
 {
     /**
-     * Raw ISBN string
+     * Raw ISBN string.
      *
      * @var string
      */
     protected $raw;
 
     /**
-     * Validation status of ISBN (null until checked)
+     * Validation status of ISBN (null until checked).
      *
      * @var bool
      */
     protected $valid = null;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param string $raw Raw ISBN string to convert/validate.
      */
