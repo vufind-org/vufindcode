@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ISMN validation and conversion functionality
+ * ISMN validation and conversion functionality.
  *
  * PHP version 7
  *
@@ -32,7 +32,7 @@ namespace VuFindCode;
 use function strlen;
 
 /**
- * ISMN Class
+ * ISMN Class.
  *
  * This class provides ISMN validation and conversion functionality.
  *
@@ -45,21 +45,21 @@ use function strlen;
 class ISMN
 {
     /**
-     * Raw ISMN string
+     * Raw ISMN string.
      *
      * @var string
      */
     protected $raw;
 
     /**
-     * Validation status of ISMN (null until checked)
+     * Validation status of ISMN (null until checked).
      *
      * @var bool
      */
     protected $valid = null;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param string $raw Raw ISMN string to convert/validate.
      */

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * EAN validation and checksumming functionality
+ * EAN validation and checksumming functionality.
  *
  * PHP version 7
  *
@@ -33,7 +33,7 @@ use function intval;
 use function strlen;
 
 /**
- * EAN Class
+ * EAN Class.
  *
  * This class provides EAN validation and checksumming functionality.
  *

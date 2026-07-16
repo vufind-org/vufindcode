@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ISBN Test Class
+ * ISBN Test Class.
  *
  * PHP version 7
  *
@@ -32,7 +32,7 @@ namespace VuFindCodeTest;
 use VuFindCode\ISBN;
 
 /**
- * ISBN Test Class
+ * ISBN Test Class.
  *
  * @category VuFind
  * @package  Tests
